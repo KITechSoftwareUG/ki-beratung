@@ -1,0 +1,100 @@
+@import "tailwindcss";
+
+/* Self-hosted font (bundled by Vite, no external requests). One family,
+   weight contrast carries the hierarchy -- no second typeface needed. */
+@import "@fontsource/onest/400.css";
+@import "@fontsource/onest/500.css";
+@import "@fontsource/onest/700.css";
+@import "@fontsource/onest/800.css";
+
+/* ---- Brand tokens: white/black/gray + one dark-blue accent ------------- */
+:root {
+  --background: 0 0% 100%;         /* #FFFFFF */
+  --surface: 219 25% 96%;          /* #EFF2F7 alternating section bg -- tinted toward the accent hue */
+  --foreground: 0 0% 9%;           /* #171717 near-black text */
+  --muted-foreground: 0 0% 40%;    /* #666666 */
+  --border: 219 15% 87%;           /* #DBDFE6 */
+  --accent: 219 61% 25%;           /* #193467 dark navy blue -- the one accent */
+  --accent-foreground: 0 0% 100%;
+}
+
+@theme inline {
+  --color-background: hsl(var(--background));
+  --color-surface: hsl(var(--surface));
+  --color-foreground: hsl(var(--foreground));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+  --color-border: hsl(var(--border));
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+
+  --font-sans: "Onest", ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+  * {
+    border-color: hsl(var(--border));
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  :focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 2px hsl(var(--background)), 0 0 0 4px hsl(var(--accent));
+    border-radius: 4px;
+  }
+}
+
+@layer utilities {
+  .text-balance { text-wrap: balance; }
+  .text-pretty { text-wrap: pretty; }
+
+  /* Hero-scale headline: fluid, capped, tight-but-not-cramped tracking. */
+  .text-hero {
+    font-size: clamp(2.5rem, 6vw + 1rem, 5.5rem);
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+  }
+
+  /* Deliberate lift under the one CTA -- a crafted accent glow, not a
+     default drop shadow. */
+  .shadow-accent {
+    box-shadow: 0 16px 32px -12px hsl(var(--accent) / 0.45);
+  }
+}
+
+/* Restrained fade-up reveal -- no blur/glow/3D, matches the "keine
+   unnoetigen Animationen" brief. Content is visible by default; motion only
+   enhances an already-usable page. */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(8px);
+}
+[data-reveal].is-visible {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
