@@ -4,10 +4,13 @@ import { CtaButton } from '../components/CtaButton'
 import { ImagePlaceholder } from '../components/ImagePlaceholder'
 import { RotatingWord } from '../components/RotatingWord'
 import { Reveal } from '../components/Reveal'
+import { TestimonialGrid } from '../components/TestimonialGrid'
 import { initReveals } from '../lib/reveal'
 import {
   ROTATING_WORDS,
   HERO,
+  PATTERN_INTERRUPT,
+  TESTIMONIALS,
   PROBLEM,
   SOLUTION,
   ABOUT,
@@ -41,8 +44,18 @@ export default function Infrastruktur() {
         </div>
       </Section>
 
-      {/* Section 2 -- Das Problem */}
-      <Section tone="surface">
+      {/* Section 2 -- Pattern-Interrupt (funnel-narrativ Schema A, Beat 2) */}
+      <Section tone="surface" maxW="max-w-2xl">
+        <Reveal>
+          <h2 className="text-balance text-2xl font-extrabold text-foreground sm:text-3xl">{PATTERN_INTERRUPT.title}</h2>
+        </Reveal>
+        <Reveal delay={0.05}>
+          <p className="text-pretty mt-5 text-lg text-muted-foreground">{PATTERN_INTERRUPT.body}</p>
+        </Reveal>
+      </Section>
+
+      {/* Section 3 -- Das Problem (Erwartung vs. Realitaet) */}
+      <Section>
         <Reveal>
           <h2 className="text-balance text-3xl font-extrabold text-foreground sm:text-4xl">{PROBLEM.title}</h2>
         </Reveal>
@@ -61,7 +74,14 @@ export default function Infrastruktur() {
         </ul>
       </Section>
 
-      {/* Section 3 -- Die Loesung */}
+      {/* Section 4 -- Kundenstimmen (funnel-narrativ Schema A, Beat 4) */}
+      <Section tone="surface" maxW="max-w-3xl">
+        <Reveal>
+          <TestimonialGrid items={TESTIMONIALS} />
+        </Reveal>
+      </Section>
+
+      {/* Section 5 -- Die Loesung (Unsere These) */}
       <Section>
         <Reveal>
           <h2 className="text-balance text-3xl font-extrabold text-foreground sm:text-4xl">{SOLUTION.title}</h2>
@@ -86,7 +106,7 @@ export default function Infrastruktur() {
         </Reveal>
       </Section>
 
-      {/* Section 4 -- Wer bin ich */}
+      {/* Section 6 -- Wer bin ich */}
       <Section tone="surface" maxW="max-w-4xl">
         <div className="grid gap-10 sm:grid-cols-[minmax(0,280px)_1fr] sm:items-center">
           <Reveal>
@@ -104,7 +124,7 @@ export default function Infrastruktur() {
         </div>
       </Section>
 
-      {/* Section 5 -- Kundenergebnisse */}
+      {/* Section 7 -- Kundenergebnisse */}
       <Section maxW="max-w-4xl">
         <div className="grid gap-5 sm:grid-cols-2">
           {RESULTS.map((r, i) => (
@@ -121,7 +141,7 @@ export default function Infrastruktur() {
         </div>
       </Section>
 
-      {/* Section 6 -- Abschluss-CTA */}
+      {/* Section 8 -- Abschluss-CTA */}
       <Section tone="inverted" className="text-center" maxW="max-w-2xl">
         <Reveal>
           <h2 className="text-balance text-3xl font-extrabold sm:text-4xl">{FINAL.title}</h2>

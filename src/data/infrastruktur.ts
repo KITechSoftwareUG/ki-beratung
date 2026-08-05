@@ -7,6 +7,28 @@ export const HERO = {
   sub: 'KI wird erst produktiv, wenn sie auf relevante Unternehmensdaten, Systeme und Prozesse zugreifen kann.',
 }
 
+// Schema A (funnel-narrativ), Beat 2 -- Pattern-Interrupt/Confession.
+// Platzhalter-Struktur: echte, konkrete Geschichte des Gründers hier einsetzen,
+// keine erfundene Biografie ausformulieren.
+export const PATTERN_INTERRUPT = {
+  title: 'Ich habe selbst gesehen, wie das schiefläuft.',
+  body: 'Platzhalter: eine kurze, persönliche Geschichte -- ein konkretes KI-/Automatisierungsprojekt, das ohne echten Datenzugriff gescheitert oder ins Leere gelaufen ist, bevor der eigentliche Ansatz klar wurde. 2-4 kurze Sätze, keine Fachbegriffe.',
+}
+
+export type Testimonial = { quote: string; name: string; role: string }
+export const TESTIMONIALS: Testimonial[] = [
+  {
+    quote: 'Platzhalter-Zitat: konkrete Zahl (Zeit/Umsatz/%) + Ergebnis eines echten Kunden hier einsetzen.',
+    name: 'Platzhalter-Name',
+    role: 'Platzhalter-Rolle, Branche',
+  },
+  {
+    quote: 'Platzhalter-Zitat: konkrete Zahl (Zeit/Umsatz/%) + Ergebnis eines echten Kunden hier einsetzen.',
+    name: 'Platzhalter-Name',
+    role: 'Platzhalter-Rolle, Branche',
+  },
+]
+
 export const PROBLEM = {
   title: 'Das Problem',
   intro:
